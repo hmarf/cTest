@@ -31,3 +31,11 @@ GLOBAL OPTIONS:
    --help, -h     show help
    --version, -v  print the version
 ```
+
+## How to use & Example
+| command | output|
+|:---|:---|
+| go test -v ./... \| ctest |string|
+| go test -v ./... \| ctest |string|
+| go test -v ./... \| ctest |string|
+| go test -v ./... \| ctest |string|
