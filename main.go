@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-
 	"golang.org/x/term"
 )
 
@@ -19,7 +18,6 @@ func main() {
 }
 
 func cTest() error {
-
 	if !term.IsTerminal(int(os.Stdin.Fd())) {
 		if err := readLines(os.Stdin); err != nil {
 			return err
@@ -41,45 +39,25 @@ func readLines(f *os.File) error {
 	return nil
 }
 
-var c *color.Color
-var (
-	success = color.New(color.FgGreen)
-	fail    = color.New(color.FgHiRed)
-)
-
+// if you want to change text color, modify this function
 func colorString(line string) {
 	trimmed := strings.TrimSpace(line)
 	switch {
 	case strings.HasPrefix(trimmed, "=== RUN"):
 		fallthrough
 	case strings.HasPrefix(trimmed, "?"):
-		c = nil
+		fmt.Println(line)
 
-	// success
-	case strings.HasPrefix(trimmed, "--- PASS"):
-		fallthrough
 	case strings.HasPrefix(trimmed, "ok"):
 		fallthrough
 	case strings.HasPrefix(trimmed, "PASS"):
-		c = success
+		fallthrough
+	case strings.HasPrefix(trimmed, "--- PASS"):
+		color.Green(line)
 
-	// failure
 	case strings.HasPrefix(trimmed, "--- FAIL"):
 		fallthrough
 	case strings.HasPrefix(trimmed, "FAIL"):
-		c = fail
+		color.Red(line)
 	}
-
-	if c == nil {
-		fmt.Printf("%s\n", line)
-		return
-	}
-	c.Printf("%s\n", line)
-}
-
-func Example(code string) (int, error) {
-	if code == "hoge" {
-		return 1, nil
-	}
-	return 0, errors.New("code must be hoge")
 }
