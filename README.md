@@ -25,7 +25,7 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --run, -r      Do not output '=== RUN: ~'
+   --run, -r      Do not output '=== RUN ~'
    --pass, -p     Do not output '--- PASS: ~'
    --fail, -f     Do not output '--- FAIL: ~'
    --help, -h     show help
