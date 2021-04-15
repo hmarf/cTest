@@ -33,9 +33,8 @@ GLOBAL OPTIONS:
 ```
 
 ## How to use & Example
-| command | output|
-|:---|:---|
-| go test -v ./... \| ctest |<img src="https://github.com/hmarf/cTest/blob/master/image/no_option.png" width="700px">|
-| go test -v ./... \| ctest -r |string|
-| go test -v ./... \| ctest -p |string|
-| go test -v ./... \| ctest -f |string|
+| command | explain | output |
+|:---|:---|:---|
+| go test -v ./... \| ctest | Output test results in color | <img src="https://github.com/hmarf/cTest/blob/master/image/no_option.png" width="700px">|
+| go test -v ./... \| ctest -r | Output test results in color <br> If the first characters of the output is `=== RUN:`, the line is not printed | https://github.com/hmarf/cTest/blob/master/image/option_r.png |
+| go test -v ./... \| ctest -p -r | Output test results in color <br> If the first characters of the output is `=== RUN:` and `--- PASS:`, the line is not printed | https://github.com/hmarf/cTest/blob/master/image/option_p_r.png |
