@@ -1,11 +1,11 @@
 # ctest
 ## Overview
-Give color to the output according to the test result. \
+Give color to the output according to the test result.
 #### *Normal test code output*
-$ go test -v ./...
+<img src="https://github.com/hmarf/cTest/blob/master/image/normal.png" width="700px">
 
 #### *Test code output when using ctest*
-$ go test -v ./... | ctest
+<img src="https://github.com/hmarf/cTest/blob/master/image/no_option.png" width="700px">
 
 ## Usage
 ```
