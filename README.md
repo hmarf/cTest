@@ -32,6 +32,12 @@ GLOBAL OPTIONS:
    --version, -v  print the version
 ```
 
+## How to install
+```
+$ brew tap hmarf/tap \
+$ brew install hmarf/tap/<pakage>
+```
+
 ## How to use & Example
 | command | explain | output |
 |:---|:---|:---|
