@@ -34,7 +34,7 @@ GLOBAL OPTIONS:
 
 ## How to install
 ```
-$ brew tap hmarf/tap \
+$ brew tap hmarf/tap
 $ brew install hmarf/tap/<pakage>
 ```
 
