@@ -35,7 +35,7 @@ GLOBAL OPTIONS:
 ## How to use & Example
 | command | output|
 |:---|:---|
-| go test -v ./... \| ctest |string|
-| go test -v ./... \| ctest |string|
-| go test -v ./... \| ctest |string|
-| go test -v ./... \| ctest |string|
+| go test -v ./... \| ctest |<img src="https://github.com/hmarf/cTest/blob/master/image/no_option.png" width="700px">|
+| go test -v ./... \| ctest -r |string|
+| go test -v ./... \| ctest -p |string|
+| go test -v ./... \| ctest -f |string|
