@@ -44,7 +44,7 @@ func Action(c *cli.Context) {
 }
 
 func getGoTestOption(args []string) []string {
-	all_ctestOptions := []string{"-r", "-p", "-f", "-v", "--version", "-h", "--help", "help"}
+	all_ctestOptions := []string{"-r", "-p", "-f", "-h", "--help", "help"}
 	ctestOption := []string{args[0]}
 	for _, arg := range args[1:] {
 		opTF := true
@@ -65,5 +65,6 @@ func getGoTestOption(args []string) []string {
 func main() {
 	app := App()
 	app.Action = Action
+	app.HideVersion = true
 	app.Run(getGoTestOption(os.Args))
 }
