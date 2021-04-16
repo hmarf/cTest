@@ -1,40 +1,31 @@
 package main
 
 import (
-	"bufio"
-	"errors"
 	"fmt"
 	"os"
-	"strings"
 
-	"github.com/fatih/color"
+	"github.com/hmarf/ctest/ctest"
 	"github.com/urfave/cli"
-	"golang.org/x/term"
 )
-
-type Option struct {
-	Run  bool
-	Pass bool
-	Fail bool
-}
 
 func App() *cli.App {
 	app := cli.NewApp()
 	app.Name = "cTest"
+	app.UsageText = "test"
 	app.Usage = "Give color to the output according to the test result."
 	app.Version = "0.0.1"
 	app.Author = "hmarf"
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
-			Name:  "run, r",
+			Name:  "r", // run
 			Usage: "Do not output '=== RUN: ~'",
 		},
 		cli.BoolFlag{
-			Name:  "pass, p",
+			Name:  "p", // pass
 			Usage: "Do not output '--- PASS: ~'",
 		},
 		cli.BoolFlag{
-			Name:  "fail, f",
+			Name:  "f", // fail
 			Usage: "Do not output '--- FAIL: ~'",
 		},
 	}
@@ -42,74 +33,37 @@ func App() *cli.App {
 }
 
 func Action(c *cli.Context) {
-	app := App()
-	if c.String("input") == "None" {
-		app.Run(os.Args)
-		return
+	co := ctest.COption{
+		Run:  c.Bool("r"), // run
+		Pass: c.Bool("p"), // pass
+		Fail: c.Bool("f"), // fail
 	}
-	option := Option{
-		Run:  c.Bool("run"),
-		Pass: c.Bool("pass"),
-		Fail: c.Bool("fail"),
-	}
-	if err := cTest(option); err != nil {
+	if err := ctest.CTest(co); err != nil {
 		fmt.Println(err)
 	}
+}
+
+func getGoTestOption(args []string) []string {
+	all_ctestOptions := []string{"-r", "-p", "-f", "-v", "--version", "-h", "--help", "help"}
+	ctestOption := []string{args[0]}
+	for _, arg := range args[1:] {
+		opTF := true
+		for _, cOption := range all_ctestOptions {
+			if arg == cOption {
+				ctestOption = append(ctestOption, arg)
+				opTF = false
+				break
+			}
+		}
+		if opTF {
+			ctest.GoTestOptions = append(ctest.GoTestOptions, arg)
+		}
+	}
+	return ctestOption
 }
 
 func main() {
 	app := App()
 	app.Action = Action
-	app.Run(os.Args)
-}
-
-func cTest(o Option) error {
-	if !term.IsTerminal(int(os.Stdin.Fd())) {
-		if err := readLines(os.Stdin, o); err != nil {
-			return err
-		}
-		return nil
-	}
-	return errors.New("must be pipe input")
-}
-
-// reference: https://www.yunabe.jp/tips/golang_readlines.html
-func readLines(f *os.File, o Option) error {
-	s := bufio.NewScanner(f)
-	for s.Scan() {
-		colorString(s.Text(), o)
-	}
-	if s.Err() != nil {
-		return s.Err()
-	}
-	return nil
-}
-
-// if you want to change text color, modify this function
-func colorString(line string, o Option) {
-	trimmed := strings.TrimSpace(line)
-	switch {
-	case strings.HasPrefix(trimmed, "=== RUN"):
-		fallthrough
-	case strings.HasPrefix(trimmed, "?"):
-		if !o.Run {
-			fmt.Println(line)
-		}
-
-	case strings.HasPrefix(trimmed, "ok"):
-		fallthrough
-	case strings.HasPrefix(trimmed, "PASS"):
-		fallthrough
-	case strings.HasPrefix(trimmed, "--- PASS"):
-		if !o.Pass {
-			color.Green(line)
-		}
-
-	case strings.HasPrefix(trimmed, "--- FAIL"):
-		fallthrough
-	case strings.HasPrefix(trimmed, "FAIL"):
-		if !o.Fail {
-			color.Red(line)
-		}
-	}
+	app.Run(getGoTestOption(os.Args))
 }
