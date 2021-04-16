@@ -35,7 +35,7 @@ GLOBAL OPTIONS:
 ## How to install
 ```
 $ brew tap hmarf/tap
-$ brew install hmarf/tap/<pakage>
+$ brew install hmarf/tap/ctest
 ```
 
 ## How to use & Example
