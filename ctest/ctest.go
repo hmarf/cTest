@@ -1,4 +1,4 @@
-package ctest
+package cTest
 
 import (
 	"bufio"
