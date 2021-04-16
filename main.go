@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hmarf/ctest/ctest"
+	"github.com/hmarf/ctest/cTest"
 	"github.com/urfave/cli"
 )
 
@@ -33,12 +33,12 @@ func App() *cli.App {
 }
 
 func Action(c *cli.Context) {
-	co := ctest.COption{
+	co := cTest.COption{
 		Run:  c.Bool("r"), // run
 		Pass: c.Bool("p"), // pass
 		Fail: c.Bool("f"), // fail
 	}
-	if err := ctest.CTest(co); err != nil {
+	if err := cTest.CTest(co); err != nil {
 		fmt.Println(err)
 	}
 }
@@ -56,7 +56,7 @@ func getGoTestOption(args []string) []string {
 			}
 		}
 		if opTF {
-			ctest.GoTestOptions = append(ctest.GoTestOptions, arg)
+			cTest.GoTestOptions = append(cTest.GoTestOptions, arg)
 		}
 	}
 	return ctestOption
