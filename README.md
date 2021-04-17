@@ -45,5 +45,5 @@ $ brew install hmarf/tap/ctest
 | command | explain | output |
 |:---|:---|:---|
 | ctest -v ./... | Output test results in color | <img src="https://github.com/hmarf/cTest/blob/master/image/v1.0.1/no_option.png" width="800px">|
-| ctest -r -v ./... | Output test results in color <br> If the first characters of the output is `=== RUN:`, the line is not printed | <img src="https://github.com/hmarf/cTest/blob/master/image/v1.0.1/option_r.png" width="800px">|
-| ctest -r -v -p ./... | Output test results in color <br> If the first characters of the output is `=== RUN:` and `--- PASS:`, the line is not printed | <img src="https://github.com/hmarf/cTest/blob/master/image/v1.0.1/option_p_r.png" width="800px">|
+| ctest -r -v ./... | Output test results in color. <br> If the first characters of the output is `=== RUN:`, the line is not printed | <img src="https://github.com/hmarf/cTest/blob/master/image/v1.0.1/option_r.png" width="800px">|
+| ctest -r -v -p ./... | Output test results in color. <br> If the first characters of the output is `=== RUN:` and `--- PASS:`, the line is not printed | <img src="https://github.com/hmarf/cTest/blob/master/image/v1.0.1/option_p_r.png" width="800px">|
