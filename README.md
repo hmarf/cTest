@@ -2,10 +2,11 @@
 ## Overview
 Give color to the output according to the test result. \
 `ctest` = `go test` \
-`go test` option can also be used in `ctest`. \ 
+`go test` option can also be used in `ctest`.
+
 ##### For example
 `go test -v ./...` = `ctest -v ./...` \
-`go test -v -cover ./...` = `ctest -v -cover ./...` \
+`go test -v -cover ./...` = `ctest -v -cover ./...`
 
 #### *Normal test code output*
 <img src="https://github.com/hmarf/cTest/blob/master/image/v0.0.1/normal.png" width="700px">
