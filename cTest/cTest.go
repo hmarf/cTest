@@ -43,7 +43,7 @@ func CTest(o COption) error {
 
 	// wait to
 	if err = cmd.Wait(); err != nil {
-		return err
+		return nil
 	}
 	return nil
 }
