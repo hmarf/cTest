@@ -11,9 +11,9 @@ import (
 func App() *cli.App {
 	app := cli.NewApp()
 	app.Name = "cTest"
-	app.UsageText = "test"
+	app.UsageText = "ctest [global options] [go test options]"
 	app.Usage = "Give color to the output according to the test result."
-	app.Version = "0.0.1"
+	app.Version = "0.1.0"
 	app.Author = "hmarf"
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{

@@ -13,10 +13,7 @@ NAME:
    cTest - Give color to the output according to the test result.
 
 USAGE:
-   ctest [global options] command [command options] [arguments...]
-
-VERSION:
-   0.0.1
+   ctest [global options] [go test options]
 
 AUTHOR:
    hmarf
@@ -25,11 +22,10 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --run, -r      Do not output '=== RUN ~'
-   --pass, -p     Do not output '--- PASS: ~'
-   --fail, -f     Do not output '--- FAIL: ~'
-   --help, -h     show help
-   --version, -v  print the version
+   -r          Do not output '=== RUN: ~'
+   -p          Do not output '--- PASS: ~'
+   -f          Do not output '--- FAIL: ~'
+   --help, -h  show help
 ```
 
 ## How to install
