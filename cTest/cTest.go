@@ -82,5 +82,7 @@ func colorString(line string, o COption) {
 		if !o.Fail {
 			color.Red(line)
 		}
+	default:
+		fmt.Println(line)
 	}
 }
