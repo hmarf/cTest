@@ -28,6 +28,16 @@ func App() *cli.App {
 			Name:  "f", // fail
 			Usage: "Do not output '--- FAIL: ~'",
 		},
+		cli.StringFlag{
+			Name:  "passColor", // pass color
+			Value: "green",
+			Usage: "Change '--- PASS: ~' color. Color list:[black, white, green, yellow, blue, magenta, cyan, white]",
+		},
+		cli.StringFlag{
+			Name:  "failColor", // fail color
+			Value: "red",
+			Usage: "Change '--- FAIL: ~' color. Color list:[black, white, green, yellow, blue, magenta, cyan, white]",
+		},
 	}
 	return app
 }
