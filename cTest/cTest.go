@@ -12,50 +12,12 @@ import (
 var GoTestOptions = []string{"test"}
 
 type COption struct {
-	Run          bool
-	Pass         bool
-	Fail         bool
-	PassColor    string
-	FailColor    string
-	passColorFmt string
-	failColorFmt string
-}
-
-func createPassColorFmt(c string) string {
-	return "\x1b[" + c + "m%s\x1b[0m"
-}
-
-func colorIdentification(color string, kind string) string {
-	switch color {
-	case "black":
-		return createPassColorFmt("30")
-	case "red":
-		return createPassColorFmt("31")
-	case "green":
-		return createPassColorFmt("32")
-	case "yellow":
-		return createPassColorFmt("33")
-	case "blue":
-		return createPassColorFmt("34")
-	case "magenta":
-		return createPassColorFmt("35")
-	case "cyan":
-		return createPassColorFmt("36")
-	case "white":
-		return createPassColorFmt("37")
-	}
-	if kind == "pass" {
-		return createPassColorFmt("32") // pass default color: green
-	} else if kind == "fail" {
-		return createPassColorFmt("31") // fail default color: red
-	}
-	return createPassColorFmt("30")
+	Run  bool
+	Pass bool
+	Fail bool
 }
 
 func CTest(o COption) error {
-	o.passColorFmt = colorIdentification(o.PassColor, "pass")
-	o.failColorFmt = colorIdentification(o.FailColor, "fail")
-	fmt.Println(o.PassColor, o.FailColor)
 	cmd := exec.Command("go", GoTestOptions...)
 	// standard output
 	stdout, err := cmd.StdoutPipe()

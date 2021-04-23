@@ -44,11 +44,9 @@ func App() *cli.App {
 
 func Action(c *cli.Context) {
 	co := cTest.COption{
-		Run:       c.Bool("r"), // run
-		Pass:      c.Bool("p"), // pass
-		Fail:      c.Bool("f"), // fail
-		PassColor: c.String("passColor"),
-		FailColor: c.String("failColor"),
+		Run:  c.Bool("r"), // run
+		Pass: c.Bool("p"), // pass
+		Fail: c.Bool("f"), // fail
 	}
 	if err := cTest.CTest(co); err != nil {
 		fmt.Println(err)
